@@ -1,4 +1,3 @@
-import { Message } from './messages/message.model';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +5,5 @@ import { Component } from '@angular/core';
     templateUrl: './app.component.html'
 })
 export class AppComponent {
-    message: Message = new Message('Some message', 'Max');
+   
 }
