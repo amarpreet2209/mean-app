@@ -1,7 +1,7 @@
+import { Component, Input } from "@angular/core";
 
-import { Message } from './message.model';
-import { Component, Input } from '@angular/core';
-import { MessageService } from './message.service';
+import { Message } from "./message.model";
+import { MessageService } from "./message.service";
 
 @Component({
     selector: 'app-message',
@@ -27,7 +27,7 @@ export class MessageComponent {
     constructor(private messageService: MessageService) {}
 
     onEdit() {
-       this.messageService.editMessage(this.message);
+        this.messageService.editMessage(this.message);
     }
 
     onDelete() {

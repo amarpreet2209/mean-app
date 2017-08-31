@@ -3,10 +3,10 @@ var router = express.Router();
 
 var Message = require('../models/message');
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     Message.find()
-        .exec(function(err, messages) {
-            if(err) {
+        .exec(function (err, messages) {
+            if (err) {
                 return res.status(500).json({
                     title: 'An error occurred',
                     error: err
@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
                 obj: messages
             });
         });
-})
+});
 
 router.post('/', function (req, res, next) {
     var message = new Message({
@@ -37,9 +37,9 @@ router.post('/', function (req, res, next) {
     });
 });
 
-router.patch('/:id', function(req, res, next ) {
-    Message.findById(req.params.id, function(err, message) {
-        if(err) {
+router.patch('/:id', function (req, res, next) {
+    Message.findById(req.params.id, function (err, message) {
+        if (err) {
             return res.status(500).json({
                 title: 'An error occurred',
                 error: err
@@ -47,7 +47,7 @@ router.patch('/:id', function(req, res, next ) {
         }
         if (!message) {
             return res.status(500).json({
-                title: 'No message found',
+                title: 'No Message Found!',
                 error: {message: 'Message not found'}
             });
         }
@@ -63,13 +63,13 @@ router.patch('/:id', function(req, res, next ) {
                 message: 'Updated message',
                 obj: result
             });
-        })
+        });
     });
 });
 
 router.delete('/:id', function(req, res, next) {
-    Message.findById(req.params.id, function(err, message) {
-        if(err) {
+    Message.findById(req.params.id, function (err, message) {
+        if (err) {
             return res.status(500).json({
                 title: 'An error occurred',
                 error: err
@@ -77,11 +77,10 @@ router.delete('/:id', function(req, res, next) {
         }
         if (!message) {
             return res.status(500).json({
-                title: 'No message found',
+                title: 'No Message Found!',
                 error: {message: 'Message not found'}
             });
         }
-       
         message.remove(function(err, result) {
             if (err) {
                 return res.status(500).json({
@@ -93,8 +92,8 @@ router.delete('/:id', function(req, res, next) {
                 message: 'Deleted message',
                 obj: result
             });
-        })
-    });    
-})
+        });
+    });
+});
 
 module.exports = router;

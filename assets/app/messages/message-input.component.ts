@@ -1,7 +1,8 @@
-import { NgForm } from '@angular/forms/src/directives';
-import { MessageService } from './message.service';
-import { Component, OnInit } from '@angular/core';
-import { Message } from './message.model';
+import { Component, OnInit } from "@angular/core";
+import { NgForm } from "@angular/forms";
+
+import { MessageService } from "./message.service";
+import { Message } from "./message.model";
 
 @Component({
     selector: 'app-message-input',
@@ -12,7 +13,7 @@ export class MessageInputComponent implements OnInit {
 
     constructor(private messageService: MessageService) {}
 
-    onSubmit(form: NgForm) {  
+    onSubmit(form: NgForm) {
         if (this.message) {
             // Edit
             this.message.content = form.value.content;
@@ -27,20 +28,20 @@ export class MessageInputComponent implements OnInit {
             this.messageService.addMessage(message)
                 .subscribe(
                     data => console.log(data),
-                    error => console.log(error)
-                );                        
-        }   
+                    error => console.error(error)
+                );
+        }
         form.resetForm();
     }
 
     onClear(form: NgForm) {
         this.message = null;
-        form.resetForm(); 
+        form.resetForm();
     }
 
     ngOnInit() {
         this.messageService.messageIsEdit.subscribe(
             (message: Message) => this.message = message
-        );     
+        );
     }
 }

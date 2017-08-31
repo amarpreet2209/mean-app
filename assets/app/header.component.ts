@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
     selector: 'app-header',
@@ -10,7 +10,9 @@ import { Component } from '@angular/core';
                     <li routerLinkActive="active"><a [routerLink]="['/auth']">Authentication</a></li>
                 </ul>
             </nav>
-        </header> 
+        </header>
     `
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+
+}
