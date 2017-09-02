@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
+var mongoose = require('mongoose');
 
 var User = require('../models/user');
 var Message = require('../models/message');
@@ -47,6 +48,7 @@ router.post('/', function (req, res, next) {
             content: req.body.content,
             user: user
         });
+
         message.save(function (err, result) {
             if (err) {
                 return res.status(500).json({
